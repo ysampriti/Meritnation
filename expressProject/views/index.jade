@@ -1,0 +1,30 @@
+extends layout
+
+block content
+	h1 Members Area
+	p Welcome to the members area
+	form(method='GET', action='/index')
+		.form-inline
+			.form-group
+				input.form-control(name='search', type='text', placeholder='Enter username')
+				|&nbsp
+				input.btn.btn-primary(type='submit', name='submit',value='Search')
+					
+	ul
+	each User in Users
+		h4
+			li 
+				a(href="/index/details?p=#{User._id}") #{User.name} 
+		
+	
+	if (pages > 0)
+		ul.pagination
+			
+			each page in lipages
+				li 
+					a(href="/index?p=#{page}") #{page}
+			
+			
+
+			
+

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+		each User in Users
+		h1 
+			li #{User.name}
+			
+
+
+
+
+			

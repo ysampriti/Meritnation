@@ -1,0 +1,15 @@
+router.get('/index', function(req, res, next) {
+	var resultArray=[];
+	mongo.connect(url, function(db, err){
+		var cursor = db.collection('nodeauth').find();
+		cursor.forEach(function(){
+			resultArray.push(doc);
+		}, function(){
+		db.close();
+		res.render('index', {items: resultArray});
+		});
+	});
+
+
+
+});

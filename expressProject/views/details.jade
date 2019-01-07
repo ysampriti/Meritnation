@@ -1,0 +1,30 @@
+extends layout
+
+block content
+	h1 User Profile
+	each User in Users
+
+			p Username: #{User.username}
+				|&nbsp
+				a Edit
+				//button(onclick='myFunction()') Edit
+
+			p Name: #{User.name}
+				|&nbsp
+				a Edit
+			
+			p Email Address: #{User.email}
+				|&nbsp
+				a Edit
+			
+		
+			a(href='/details/delete?p=#{User._id}') Delete User
+					
+			
+		
+			
+
+
+
+
+			

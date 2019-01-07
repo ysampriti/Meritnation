@@ -1,0 +1,15 @@
+if (current == 1) 
+				li.disabled
+					a First
+			else 
+				li
+					a(href="/index?p=1") First
+
+
+if (current == pages) 
+				li.disabled
+					a Last
+			else
+			li
+				a(href="/index?p=#{pages}") Last
+				

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	h3 Update
+
+	.form-group
+	label Name
+	input.form-control(name='name', type='text', placeholder='#{user.name}')
+
+	label Email
+	input.form-control(name='email', type='email', placeholder='#{user.email')
+	.form-group
+	label Username
+	input.form-control(name='username', type='text', placeholder='#{user.username}')
+
+	input.btn.btn-primary(type='submit', name='submit',value='Save')

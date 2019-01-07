@@ -1,0 +1,23 @@
+extends layout
+
+block content
+	h1 Members Area
+	p Welcome to the members area
+	ul
+	each User in Users
+		h4
+			li #{User.name} 
+				a(href='/index/details') View Details
+		
+	
+	if (pages > 0)
+		ul.pagination
+			
+			each page in lipages
+				li 
+					a(href="/index?p=#{page}") #{page}
+			
+			
+
+			
+

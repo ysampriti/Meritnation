@@ -1,0 +1,65 @@
+var express = require('express');
+//var mongoose = require('mongoose');
+var router = express.Router();
+var User = require('../models/user');
+
+/* GET home page. */
+/*var perPage=5;
+router.get('/index', ensureAuthenticated, function(req, res, next) {
+ 	 User.getUserList(function(err, user) {
+		if(err) res.json(err);
+		else res.render('index', 
+				{Users: user}
+				);
+	  });
+	});
+*/
+/*router.get('/index/details', ensureAuthenticated, function(req, res, next) {
+ 	 User.getUserDetails(function(err, user) {
+		if(err) res.json(err);
+		else res.render('details', {Users: user});
+	  });		
+	
+
+});*/
+
+
+router.get('/index', function(req, res, next) {
+    var perPage = 5;
+    var lipages=[];
+    var pageNo=req.query.p;
+	
+    var page = req.params.page || 1;
+		User.getUserList(pageNo, function(err, user){
+			User.count().exec(function(err, count) {
+				pages = Math.ceil(count / perPage);
+
+				for(i=1;i<=pages;i++){
+				lipages.push(i);	
+				}
+				if (err) return next(err)
+					res.render('index', {
+					    Users: user,
+					    current: page,
+					    pages: pages,
+					    lipages:lipages	
+					});
+				    });
+			});
+});
+
+
+
+
+
+
+
+function ensureAuthenticated(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	}
+	res.redirect('/users/login');
+}
+
+
+module.exports = router;
